@@ -69,7 +69,7 @@
 
 **1) Group Convolution 기법**
 
-![group convolution 예시 사진](/4.png)
+![group convolution 예시 사진](4.png)
 
 group convolution 예시 사진
 
@@ -98,7 +98,7 @@ def group_conv2d(inputs, filters, kernel_size, groups=1, **kwargs):
 
 **2) Dilated Convolution 기법**
 
-![dilated convolution 예시 사진](/5.png)
+![dilated convolution 예시 사진](5.png)
 
 
   Dilated Convolution은 필터의 리셉티드 필드를 확장하기 위해, 필터 내 커널 요소 간에 간격을 추가하는 컨벌루션 기법이다. 
@@ -178,9 +178,9 @@ plt.show()
 
 ### 1) 기존의 U-Net 알고리즘으로 코드를 실행
 
-![photo/6.png](/8.png)
+![photo/6.png](8.png)
 
-![photo/7.png](/9.png)
+![photo/7.png](9.png)
 
 | Parameter | 1,925,601 |
 | --- | --- |
@@ -190,9 +190,9 @@ plt.show()
 
 ### 2) 경량화 결과(Group Convolution + Dilated Convolution )
 
-![스크린샷 2024-12-23 오후 4.37.16.png](photo/6.png)
+![스크린샷 2024-12-23 오후 4.37.16.png](6.png)
 
-![스크린샷 2024-12-23 오후 4.39.14.png](photo/7.png)
+![스크린샷 2024-12-23 오후 4.39.14.png](7.png)
 
 | Parameter | 1,075,265 |
 | --- | --- |
@@ -212,9 +212,9 @@ plt.show()
 
 5개의 샘플의 구분 결과와 손실 그래프는 다음과 같다.
 
-![Figure_2.png](photo/11.png)
+![Figure_2.png](11.png)
 
-![Figure_1.png](photo/12.png)
+![Figure_1.png](12.png)
 
 # 4. 논의
 
@@ -226,13 +226,13 @@ plt.show()
 
 ShuffleNet은 Grouped Convolution과 DepthWise Seperable Convolution 2가지의 합성곱으로 연산하며, 합성곱층에서 일부만 고려하고, 모든 채널에 대해 고려하기 위해 채널을 Shuffling 한다. 따라서, Grouped Convolution 코드와 DepthWise Seperable Convolution 함수를 추가하고, 채널을 섞는 코드까지 구현했다.
 
-![image.png](photo/19.png)
+![image.png](19.png)
 
 성능은 다음과 같이 나왔다.
 
-![image.png](photo/13.png)
+![image.png](13.png)
 
-![image.png](photo/14.png)
+![image.png](14.png)
 
 | Parameter | 338,705 |
 | --- | --- |
@@ -244,13 +244,13 @@ ShuffleNet은 Grouped Convolution과 DepthWise Seperable Convolution 2가지의 
 
 TensorFlow Lite의 PTQ 기능을 활용하여 UNet 모델을 양자화한다. 이를 위해서 기존의 U-Net 코드를 tflite로 변환해야 한다. 따라서, apply_post_training_quantization 함수를 다음과 같이 만들었다.
 
-![스크린샷 2024-12-22 215441.png](photo/10.png)
+![스크린샷 2024-12-22 215441.png](10.png)
 
 Quantization 기법을 사용한 U-Net 코드의 성능은 다음과 같이 나왔다.
 
-![image.png](photo/15.png)
+![image.png](15.png)
 
-![image.png](photo/16.png)
+![image.png](16.png)
 
 | Size in MB | 1.87MB |
 | --- | --- |
@@ -259,9 +259,9 @@ Quantization 기법을 사용한 U-Net 코드의 성능은 다음과 같이 나�
 
 ### 3) Grouped Convolution 기법을 이용한 U-Net 코드 실행
 
-![image.png](photo/17.png)
+![image.png](17.png)
 
-![image.png](photo/18.png)
+![image.png](18.png)
 
 | Parameter | 845,637 |
 | --- | --- |
@@ -271,11 +271,11 @@ Quantization 기법을 사용한 U-Net 코드의 성능은 다음과 같이 나�
 
 ### 4) Dilated Convolution 기법을 이용한 U-Net 코드 실행
 
-![스크린샷 2024-12-23 오전 1.05.25.png](photo/2.png)
+![스크린샷 2024-12-23 오전 1.05.25.png](2.png)
 
 dilation rate는 합성곱 신경망에서 사용되는 파라미터로, 필터가 입력 데이터에서 얼마나 멀리 떨어진 픽셀을 참조할지를 결정한다. dilation rate를 그림과 같이 설정하고 모델을 실행하면, 성능은 다음과 같다.
 
-![스크린샷 2024-12-23 오전 1.13.58.png](photo/3.png)
+![스크린샷 2024-12-23 오전 1.13.58.png](3.png)
 
 | Parameter | 1,925,601 |
 | --- | --- |
