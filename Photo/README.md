@@ -15,7 +15,7 @@
 
   U-Net은 CNN 구조를 기반으로 한 딥러닝 모델로, 이미지 분할 작업에 특화되어 설계되었다. U-Net은 인코더와 디코더로 이루어져 있다. 인코딩 단계에서는 입력 이미지의 특징을 포착할 수 있도록 채널 수를 늘리면서 차원을 축소해 나가며, 디코딩 단계에서는 저차원으로 인코딩된 정보만 이용하여 채널 수를 줄이고 차원을 늘려서 고차원의 이미지를 복원한다.
 
-![                                           U-Net의 기본 구조](photo/\1.png) 
+![photo/1.png](/1.png) 
 
 ## 2. 딥러닝 경량화 기법
 
@@ -69,7 +69,7 @@
 
 **1) Group Convolution 기법**
 
-![group convolution 예시 사진](photo/4.png)
+![group convolution 예시 사진](/4.png)
 
 group convolution 예시 사진
 
@@ -98,7 +98,7 @@ def group_conv2d(inputs, filters, kernel_size, groups=1, **kwargs):
 
 **2) Dilated Convolution 기법**
 
-![dilated convolution 예시 사진](photo/5.png)
+![dilated convolution 예시 사진](/5.png)
 
 
   Dilated Convolution은 필터의 리셉티드 필드를 확장하기 위해, 필터 내 커널 요소 간에 간격을 추가하는 컨벌루션 기법이다. 
@@ -178,9 +178,9 @@ plt.show()
 
 ### 1) 기존의 U-Net 알고리즘으로 코드를 실행
 
-![photo/6.png](photo/8.png)
+![photo/6.png](/8.png)
 
-![photo/7.png](photo/9.png)
+![photo/7.png](/9.png)
 
 | Parameter | 1,925,601 |
 | --- | --- |
